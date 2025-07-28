@@ -9,7 +9,7 @@ import {
   Stack
 } from '@mui/material';
 import ProductsFilterSidebar from './ProductsFilterSidebar'; // Use the sidebar from previous response
-
+import { useCart } from './cartContext';
 
 const productsData = [
   {
@@ -36,7 +36,7 @@ export default function ProductsPage() {
   const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
   const [availableOnly, setAvailableOnly] = useState(false);
   const [hover, setHover] = useState(false);
-
+  const { addToCart } = useCart();
   const navigate = useNavigate();
 
   // Filtering logic
@@ -59,6 +59,19 @@ export default function ProductsPage() {
     if (chip === 'Còn hàng') setAvailableOnly(false);
     else if (chip === "Cờ tỷ phú") setTypeChecked(false);
     else setPriceRange([minPrice, maxPrice]);
+  };
+
+  const handleBuyNow = () => {
+    addToCart(
+      {
+        id: "giao-sac-van-ky",
+        name: "Giao Sắc Văn Kỳ",
+        price: 2499000,
+        image: '/mainImg.jpg'
+      },
+      1
+    );
+    navigate('/thanh-toan');
   };
 
   return (
@@ -130,7 +143,7 @@ export default function ProductsPage() {
                   }}
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
-                  onClick={() => navigate('/san-pham/giao-sac-van-ky')}
+                  
                 >
                   <Box component="img"
                     src={hover ? productsData[0].images[1] : productsData[0].images[0]}
@@ -142,6 +155,7 @@ export default function ProductsPage() {
                       display: 'block',
                       borderRadius: 2,
                     }}
+                    onClick={() => navigate('/san-pham/giao-sac-van-ky')}
                   />
                   {/* "Mua ngay" button only shows on hover */}
                   <Button
@@ -164,10 +178,7 @@ export default function ProductsPage() {
                       boxShadow: 'none',
                       '&:hover': { color: '#66431b', bgcolor: '#fff', borderColor: '#66431b'},
                     }}
-                    onClick={e => {
-                      e.stopPropagation(); // so it doesn't trigger image link
-                      navigate('/san-pham/giao-sac-van-ky');
-                    }}
+                    onClick={handleBuyNow}
                   >
                     Mua ngay
                   </Button>

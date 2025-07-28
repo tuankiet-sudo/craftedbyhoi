@@ -16,6 +16,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import  {useCart } from './cartContext';
+import { useNavigate } from 'react-router-dom';
 
 const images = [
   '/images/giao-sac-van-ky-1.jpg',
@@ -107,6 +108,7 @@ export default function GiaoSacVanKyPage() {
   const [open, setOpen] = useState([true, false, false]);
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSection = (idx: number) => {
     setOpen(arr => arr.map((x, i) => (i === idx ? !x : x)));
@@ -129,6 +131,19 @@ export default function GiaoSacVanKyPage() {
       quantity
     );
     setTimeout(() => setAdding(false), 700); // Debounce for user experience
+  };
+
+  const handleBuyNow = () => {
+    addToCart(
+      {
+        id: "giao-sac-van-ky",
+        name: "Giao Sắc Văn Kỳ",
+        price: 2499000,
+        image: '/mainImg.jpg'
+      },
+      1
+    );
+    navigate('/thanh-toan');
   };
 
   return (
@@ -338,6 +353,7 @@ export default function GiaoSacVanKyPage() {
                 '&:hover': { bgcolor: '#66431b', color: '#fff' },
                 textTransform: 'none'
               }}
+              onClick={handleBuyNow}
             >
               Mua ngay
             </Button>

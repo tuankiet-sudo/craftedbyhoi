@@ -4,11 +4,13 @@ import FlipbookIframeCatalog from "./FlipbookIframeCatalog";
 import { useParams } from "react-router-dom";
 
 const CatalogPage = () => {
-    const page = useParams<{ page?: string }>().page;
-    console.log("CatalogPage page:", page);
+    // Parse page param as integer, add 1 if exists
+    const pageParam = useParams<{ page?: string }>().page;
+    let pageNum: number | undefined = pageParam ? Number(pageParam) + 1 : undefined;
+    console.log("CatalogPage page:", pageParam, "Actual shown page:", pageNum);
 
-    if (page) {
-        const src= `https://heyzine.com/flip-book/a799c6d307.html#page/${page}`;
+    if (pageNum !== undefined) {
+        const src = `https://heyzine.com/flip-book/a799c6d307.html#page/${pageNum}`;
         return <FlipbookIframeCatalog src={src} />;
     }
 

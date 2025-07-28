@@ -67,13 +67,13 @@ function Step1({ onNext, form, setForm }: any) {
 
 function Step2({ onNext, receipt, setReceipt }: any) {
   // You can replace src with your QR code image link
-  const QR_SRC = "/images/hoi-qr.png";
+  const QR_SRC = "/hoi-qr.png";
   return (
     <Grid container spacing={0} sx={{ minHeight: 400 }}>
       <Grid size={{xs:12, md:6}} sx={{ px: { xs: 2, md: 5 }, py: 7, display: 'flex', flexDirection: 'column', alignItems: "center", justifyContent: 'center' }}>
         <Typography sx={{ fontWeight: 600, mb: 2 }}>Quét QR để đóng góp</Typography>
         <Paper elevation={0} sx={{ p: 3, bgcolor: '#faf9ee', borderRadius: 3 }}>
-          <img src={QR_SRC} alt="Quỹ HỘI QR" style={{ width: 220, height: 220 }} />
+          <img src={QR_SRC} alt="Quỹ HỘI QR" style={{ width: 250, height: 250 }} />
         </Paper>
       </Grid>
       <Grid size={{xs:12, md:6}} sx={{ px: { xs: 2, md: 5 }, py: 7, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>

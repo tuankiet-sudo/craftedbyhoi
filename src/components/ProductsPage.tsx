@@ -166,7 +166,7 @@ export default function ProductsPage() {
                     }}
                     onClick={e => {
                       e.stopPropagation(); // so it doesn't trigger image link
-                      navigate('san-pham/giao-sac-van-ky');
+                      navigate('/san-pham/giao-sac-van-ky');
                     }}
                   >
                     Mua ngay

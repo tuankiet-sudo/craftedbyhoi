@@ -10,6 +10,7 @@ import ProductsPage from './components/ProductsPage';
 import CatalogPage
  from './components/CatalogPage';
 import DonationPage from './components/Donation';
+import AboutPage from './components/AboutUs';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/catalog/:page" element={<CatalogPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/quyen-gop" element={<DonationPage />} />
+          <Route path='/gioi-thieu' element={<AboutPage />} />
           {/* <Route path="/gioi-thieu" element={<AboutUs />} />
           <Route path="/san-pham" element={<Products />} />
           <Route path="/quyen-gop" element={<Donation />} />

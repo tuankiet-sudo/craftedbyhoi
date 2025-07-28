@@ -9,6 +9,8 @@ import GiaoSacVanKyPage from './components/GiaoSacVanKyPage';
 import ProductsPage from './components/ProductsPage';
 import CatalogPage
  from './components/CatalogPage';
+import DonationPage from './components/Donation';
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,7 +21,7 @@ function App() {
           <Route path="/san-pham" element={<ProductsPage />} />
           <Route path="/catalog/:page" element={<CatalogPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
-          
+          <Route path="/quyen-gop" element={<DonationPage />} />
           {/* <Route path="/gioi-thieu" element={<AboutUs />} />
           <Route path="/san-pham" element={<Products />} />
           <Route path="/quyen-gop" element={<Donation />} />

@@ -70,18 +70,23 @@ const Header = () => {
         </Button>
 
         {/* Products Button with Hover Dropdown */}
-        <Box onMouseLeave={handleMenuClose}>
+        <Box onMouseLeave={handleMenuClose} sx={{ position: 'relative' }}>
           <Button
-            disableRipple // Add this prop to remove the ripple and default hover background
             sx={navButtonStyles}
             component={Link}
             to="/san-pham"
             endIcon={<KeyboardArrowDownIcon />}
             onMouseEnter={handleMenuOpen}
+            onClick={() => handleMenuItemClick('/san-pham')} // <--- handle click to route
+            id="products-button"
+            aria-controls={open ? 'products-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
           >
             Sản phẩm
           </Button>
           <Menu
+            id="products-menu"
             anchorEl={anchorEl}
             open={open}
             onClose={handleMenuClose}
@@ -98,9 +103,7 @@ const Header = () => {
               horizontal: 'right',
             }}
             PaperProps={{
-              sx: {
-                backgroundColor: 'white',
-              },
+              sx: { backgroundColor: 'white' },
             }}
           >
             <MenuItem
@@ -109,7 +112,7 @@ const Header = () => {
             >
               Giao Sắc Văn Kỳ
             </MenuItem>
-            {/* Add more products here */}
+            {/* More items if needed */}
           </Menu>
         </Box>
 

@@ -5,6 +5,9 @@ import HomePage from './components/HomePage';
 // import Donation from './components/Donation';
 // import Contact from './components/Contact';
 import Layout from './components/Layout';
+import GiaoSacVanKyPage from './components/GiaoSacVanKyPage';
+import ProductsPage from './components/ProductsPage';
+import FlipbookIframeCatalog from './components/FlipbookIframeCatalog';
 
 function App() {
   return (
@@ -12,6 +15,10 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/san-pham/giao-sac-van-ky" element={<GiaoSacVanKyPage />} />
+          <Route path="/san-pham/giao-sac-van-ky/:page" element={<GiaoSacVanKyPage />} />
+          <Route path="/san-pham" element={<ProductsPage />} />
+          <Route path="/catalog/:page" element={<FlipbookIframeCatalog />} />
           {/* <Route path="/gioi-thieu" element={<AboutUs />} />
           <Route path="/san-pham" element={<Products />} />
           <Route path="/quyen-gop" element={<Donation />} />

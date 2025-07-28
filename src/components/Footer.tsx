@@ -70,7 +70,7 @@ const Footer = () => {
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Quà tặng doanh nghiệp</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Đối tác mua sỉ</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Thiết kế theo yêu cầu</MuiLink>
-            <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Catalogue sản phẩm</MuiLink>
+            <MuiLink component={RouterLink} to="/catalog" display="block" color="inherit" underline="none" sx={ linkStyles }>Catalogue sản phẩm</MuiLink>
           </Grid>
 
           {/* Column 5: Policies */}

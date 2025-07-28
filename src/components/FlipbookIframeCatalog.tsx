@@ -9,7 +9,7 @@ type FlipbookIframeCatalogProps = {
 
 const FlipbookIframeCatalog: React.FC<FlipbookIframeCatalogProps> = ({
   src = "https://heyzine.com/flip-book/a799c6d307.html",
-  height = 800,
+  height = "calc(100vh - 64px)",
   width = "100%"
 }) => (
   <iframe

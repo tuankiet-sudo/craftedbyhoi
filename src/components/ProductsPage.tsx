@@ -112,92 +112,90 @@ export default function ProductsPage() {
         <Grid container spacing={4}>
           {filtered.map(product => (
             <Grid size={{xs:12, sm:6, md:4}} key={product.id}>
-    <Box
-      sx={{
-        border: '1px solid #eee',
-        borderRadius: 3,
-        p: 2,
-        background: '#fff',
-        overflow: 'hidden',
-        transition: 'border 0.2s',
-        minWidth: 260,
-        cursor: 'default',
-      }}
-    >
-      <Box
-        sx={{
-          position: 'relative',
-          height: 320,
-          borderRadius: 2,
-          overflow: 'hidden',
-          cursor: 'pointer',
-        }}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => navigate('/san-pham/giao-sac-van-ky')}
-      >
-        <Box component="img"
-          src={hover ? productsData[0].images[1] : productsData[0].images[0]}
-          sx={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'all .5s cubic-bezier(.3,.6,.3,1)',
-            display: 'block',
-            borderRadius: 2,
-          }}
-        />
-        {/* "Mua ngay" button only shows on hover */}
-        <Button
-          variant="contained"
-          sx={{
-            position: 'absolute',
-            bottom: 12,
-            right: 12,
-            px: 3,
-            py: 1,
-            fontWeight: 500,
-            fontSize: '0.98rem',
-            borderRadius: 2,
-            bgcolor: '#001524',
-            color: '#fff',
-            textTransform: 'none',
-            opacity: hover ? 1 : 0,
-            pointerEvents: hover ? 'auto' : 'none',
-            transition: 'opacity 0.3s cubic-bezier(.3,.6,.3,1)',
-            boxShadow: 'none',
-            '&:hover': { bgcolor: '#66431b' },
-          }}
-          onClick={e => {
-            e.stopPropagation(); // so it doesn't trigger image link
-            navigate('san-pham/giao-sac-van-ky');
-          }}
-        >
-          Mua ngay
-        </Button>
-      </Box>
-      {/* Product Info */}
-      <Box sx={{ mt: 2, textAlign: 'left' }}>
-        <Typography
-          variant="subtitle1"
-          sx={{
-            fontWeight: 600,
-            mb: 1,
-            fontSize: 18,
-            cursor: 'pointer',
-            color: '#222',
-            transition: 'color 0.15s',
-            '&:hover': { color: '#66431b' }
-          }}
-          onClick={() => navigate('san-pham/giao-sac-van-ky')}
-        >
-          Giao Sắc Văn Kỳ
-        </Typography>
-        <Typography sx={{ color: '#222', fontSize: 16 }}>
-          {price.toLocaleString('vi-VN')}₫
-        </Typography>
-      </Box>
-    </Box>
+              <Box
+                sx={{
+                  p: 2,
+                  background: '#fff',
+                  overflow: 'hidden',
+                  transition: 'border 0.2s',
+                  minWidth: 260,
+                  cursor: 'default',
+                }}
+              >
+                <Box
+                  sx={{
+                    position: 'relative',
+                    height: 320,
+                    borderRadius: 2,
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                  onClick={() => navigate('/san-pham/giao-sac-van-ky')}
+                >
+                  <Box component="img"
+                    src={hover ? productsData[0].images[1] : productsData[0].images[0]}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'all .5s cubic-bezier(.3,.6,.3,1)',
+                      display: 'block',
+                      borderRadius: 2,
+                    }}
+                  />
+                  {/* "Mua ngay" button only shows on hover */}
+                  <Button
+                    variant="contained"
+                    sx={{
+                      position: 'absolute',
+                      bottom: 12,
+                      right: 12,
+                      px: 3,
+                      py: 1,
+                      fontWeight: 500,
+                      fontSize: '0.98rem',
+                      borderRadius: 2,
+                      bgcolor: '#66431b',
+                      color: '#fff',
+                      textTransform: 'none',
+                      opacity: hover ? 1 : 0,
+                      pointerEvents: hover ? 'auto' : 'none',
+                      transition: 'opacity 0.3s cubic-bezier(.3,.6,.3,1)',
+                      boxShadow: 'none',
+                      '&:hover': { bgcolor: '#66431b' },
+                    }}
+                    onClick={e => {
+                      e.stopPropagation(); // so it doesn't trigger image link
+                      navigate('san-pham/giao-sac-van-ky');
+                    }}
+                  >
+                    Mua ngay
+                  </Button>
+                </Box>
+                {/* Product Info */}
+                <Box sx={{ mt: 2, textAlign: 'left' }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontWeight: 600,
+                      mb: 1,
+                      fontSize: 18,
+                      cursor: 'pointer',
+                      color: '#222',
+                      transition: 'color 0.15s',
+                      '&:hover': { color: '#66431b' }
+                    }}
+                    onClick={() => navigate('san-pham/giao-sac-van-ky')}
+                  >
+                    Giao Sắc Văn Kỳ
+                  </Typography>
+                  <Typography sx={{ color: '#222', fontSize: 16 }}>
+                    {price.toLocaleString('vi-VN')}₫
+                  </Typography>
+                </Box>
+              </Box>
             </Grid>
           ))}
         </Grid>

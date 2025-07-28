@@ -26,7 +26,7 @@ const Header = () => {
     color: 'black',
     textTransform: 'none',
     fontSize: '1rem',
-    margin: '0 8px',
+    margin: '16px 8px',
     '&:hover': {
       backgroundColor: 'transparent',
       color: 'grey',
@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       elevation={1}
       sx={{ backgroundColor: 'white' }}
     >

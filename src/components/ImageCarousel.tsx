@@ -11,7 +11,7 @@ const images = [
 
 // Custom Indicator (dot) styling
 const Indicator = styled('li')<{isSelected?: boolean}>(({ isSelected }) => ({
-  background: isSelected ? 'white' : 'rgba(255, 255, 255, 0.6)',
+  background: isSelected ? '#A2AF9B' : '#EEEEEE',
   width: isSelected ? '36px' : '12px',
   height: '12px',
   display: 'inline-block',

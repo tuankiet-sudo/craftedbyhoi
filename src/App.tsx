@@ -7,8 +7,8 @@ import HomePage from './components/HomePage';
 import Layout from './components/Layout';
 import GiaoSacVanKyPage from './components/GiaoSacVanKyPage';
 import ProductsPage from './components/ProductsPage';
-import FlipbookIframeCatalog from './components/FlipbookIframeCatalog';
-
+import CatalogPage
+ from './components/CatalogPage';
 function App() {
   return (
     <BrowserRouter>
@@ -16,9 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/san-pham/giao-sac-van-ky" element={<GiaoSacVanKyPage />} />
-          <Route path="/san-pham/giao-sac-van-ky/:page" element={<GiaoSacVanKyPage />} />
           <Route path="/san-pham" element={<ProductsPage />} />
-          <Route path="/catalog/:page" element={<FlipbookIframeCatalog />} />
+          <Route path="/catalog/:page" element={<CatalogPage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          
           {/* <Route path="/gioi-thieu" element={<AboutUs />} />
           <Route path="/san-pham" element={<Products />} />
           <Route path="/quyen-gop" element={<Donation />} />

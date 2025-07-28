@@ -1,13 +1,13 @@
 import React from 'react';
 
-type FlipbookIframeProps = {
+type FlipbookIframeCatalogProps = {
   src?: string;
   height?: string | number;
   width?: string | number;
 };
 
 
-const FlipbookIframe: React.FC<FlipbookIframeProps> = ({
+const FlipbookIframeCatalog: React.FC<FlipbookIframeCatalogProps> = ({
   src = "https://heyzine.com/flip-book/a799c6d307.html",
   height = 800,
   width = "100%"
@@ -26,4 +26,4 @@ const FlipbookIframe: React.FC<FlipbookIframeProps> = ({
   ></iframe>
 );
 
-export default FlipbookIframe;
+export default FlipbookIframeCatalog;

@@ -2,26 +2,13 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Button, Box, Menu, MenuItem } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Fade } from '@mui/material';
 
 const Header = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleMenuItemClick = (path: string) => {
-    navigate(path);
-    handleMenuClose();
-  };
-
-  // Common styles for navigation buttons
   const navButtonStyles = {
     color: 'black',
     textTransform: 'none',
@@ -37,20 +24,48 @@ const Header = () => {
   const menuItemStyles = {
     color: 'black',
     backgroundColor: 'transparent',
+    transition: 'all 0.22s cubic-bezier(.3,.6,.3,1)',
     '&:hover': {
-      color: 'grey',
-      backgroundColor: 'transparent',
+      color: '#66431b',
+      backgroundColor: '#f7efe3',
+      transform: 'translateX(8px) scale(1.03)',
+      boxShadow: '0 2px 16px 0 #f7efe344',
     },
   };
 
+  // ---- Products Button Handlers ----
+  const handleProductsButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    // Only open menu on hover, not on click
+    if (event.type === 'mouseenter') {
+      setAnchorEl(event.currentTarget);
+    }
+  };
+
+  const handleProductsButtonMouseLeave = () => {
+    setTimeout(() => {
+      setAnchorEl(null);
+    }, 120); // allow time for pointer to move to Menu
+  };
+
+  const handleMenuClose = () => setAnchorEl(null);
+
+  const handleMenuItemClick = (path: string) => {
+    navigate(path);
+    handleMenuClose();
+  };
+
+  // ---- Navigation Handler ----
+  const handleProductsClick = () => {
+    // Only trigger on actual click, not on hover
+    navigate('/san-pham');
+    handleMenuClose();
+  };
+
+  // Styles (as before) ...
+
   return (
-    <AppBar
-      position="sticky"
-      elevation={1}
-      sx={{ backgroundColor: 'white' }}
-    >
+    <AppBar position="sticky" elevation={1} sx={{ backgroundColor: 'white' }}>
       <Toolbar>
-        {/* Logo */}
         <Box sx={{ flexGrow: 1 }}>
           <Link to="/">
             <img
@@ -69,19 +84,20 @@ const Header = () => {
           Giới thiệu
         </Button>
 
-        {/* Products Button with Hover Dropdown */}
-        <Box onMouseLeave={handleMenuClose} sx={{ position: 'relative' }}>
+        {/* --- PRODUCTS BUTTON --- */}
+        <Box
+          sx={{ position: 'relative', display: 'inline-block' }}
+          onMouseEnter={handleProductsButtonClick}
+          onMouseLeave={handleProductsButtonMouseLeave}
+        >
           <Button
             sx={navButtonStyles}
-            component={Link}
-            to="/san-pham"
             endIcon={<KeyboardArrowDownIcon />}
-            onMouseEnter={handleMenuOpen}
-            onClick={() => handleMenuItemClick('/san-pham')} // <--- handle click to route
-            id="products-button"
             aria-controls={open ? 'products-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
+            onClick={handleProductsClick} // ← this is the KEY for navigation
+            component="button" // NOT Link! (else it’ll navigate on hover too)
           >
             Sản phẩm
           </Button>
@@ -96,26 +112,40 @@ const Header = () => {
             }}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'right',
+              horizontal: 'left',
             }}
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'right',
+              horizontal: 'left',
             }}
-            PaperProps={{
-              sx: { backgroundColor: 'white' },
-            }}
+  TransitionComponent={Fade} // <--- Smooth fade
+  transitionDuration={300}   // <--- Adjust speed if desired
+  PaperProps={{
+    sx: {
+      backgroundColor: 'white',
+      width: 200,
+      padding: '8px 8px',
+      borderRadius: 2,
+      boxShadow: '0 6px 32px 0 #eee',
+      transition: 'all 0.25s cubic-bezier(.3,.6,.3,1)',
+      overflow: 'hidden',
+    }
+  }}
           >
+            <MenuItem
+              sx={menuItemStyles}
+              onClick={() => handleMenuItemClick('/san-pham')}
+            >
+              Tất cả sản phẩm
+            </MenuItem>
             <MenuItem
               sx={menuItemStyles}
               onClick={() => handleMenuItemClick('/san-pham/giao-sac-van-ky')}
             >
               Giao Sắc Văn Kỳ
             </MenuItem>
-            {/* More items if needed */}
           </Menu>
         </Box>
-
         <Button sx={navButtonStyles} component={Link} to="/quyen-gop">
           Quyên góp
         </Button>

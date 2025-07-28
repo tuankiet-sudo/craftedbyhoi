@@ -19,7 +19,7 @@ export default function AboutPage() {
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -52,7 +52,7 @@ export default function AboutPage() {
           backgroundImage: `url(${contentBg})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           minHeight: { xs: 520, md: 660 },
           display: 'flex',
           alignItems: 'center',
@@ -61,7 +61,6 @@ export default function AboutPage() {
             content: '""',
             position: 'absolute',
             inset: 0,
-            background: 'rgba(255, 255, 255, 0.82)', // white overlay for readability
             zIndex: 0,
           }
         }}

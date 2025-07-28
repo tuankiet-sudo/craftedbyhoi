@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Button, Box, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Menu, MenuItem, IconButton } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Fade } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
+import { useCart } from './cartContext'; // import path as needed
 
 const Header = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { cart } = useCart();
 
   const navButtonStyles = {
     color: 'black',
@@ -118,19 +122,19 @@ const Header = () => {
               vertical: 'top',
               horizontal: 'left',
             }}
-  TransitionComponent={Fade} // <--- Smooth fade
-  transitionDuration={300}   // <--- Adjust speed if desired
-  PaperProps={{
-    sx: {
-      backgroundColor: 'white',
-      width: 200,
-      padding: '8px 8px',
-      borderRadius: 2,
-      boxShadow: '0 6px 32px 0 #eee',
-      transition: 'all 0.25s cubic-bezier(.3,.6,.3,1)',
-      overflow: 'hidden',
-    }
-  }}
+            TransitionComponent={Fade} // <--- Smooth fade
+            transitionDuration={300}   // <--- Adjust speed if desired
+            PaperProps={{
+              sx: {
+                backgroundColor: 'white',
+                width: 200,
+                padding: '8px 8px',
+                borderRadius: 2,
+                boxShadow: '0 6px 32px 0 #eee',
+                transition: 'all 0.25s cubic-bezier(.3,.6,.3,1)',
+                overflow: 'hidden',
+              }
+            }}
           >
             <MenuItem
               sx={menuItemStyles}
@@ -149,9 +153,15 @@ const Header = () => {
         <Button sx={navButtonStyles} component={Link} to="/quyen-gop">
           Quyên góp
         </Button>
-        <Button sx={navButtonStyles} component={Link} to="/lien-he">
-          Liên hệ
-        </Button>
+                <IconButton
+          sx={{ ml: 2, color: "#001524" }}
+          onClick={() => navigate("/gio-hang")}
+          aria-label="Giỏ hàng"
+        >
+          <Badge badgeContent={cart.reduce((sum, item) => sum + item.quantity, 0)} color="error">
+            <ShoppingCartIcon fontSize="large" />
+          </Badge>
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

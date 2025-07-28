@@ -4,7 +4,6 @@ import ImageCarousel from './ImageCarousel';
 import Ticker from './Ticker';
 import InfoSection from './InfoSection';
 import AboutSection from './AboutSection';
-import FlipbookIframe from './FlipbookIframe';
 
 const HomePage = () => {
   return (
@@ -17,8 +16,6 @@ const HomePage = () => {
       <InfoSection />
 
       <AboutSection />
-
-      <FlipbookIframe />
 
     </div>
   );

@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import  {useCart } from './cartContext';
 
 const images = [
   '/images/giao-sac-van-ky-1.jpg',
@@ -101,9 +102,11 @@ const sections = [
 ];
 
 export default function GiaoSacVanKyPage() {
+  const { addToCart } = useCart();
   const [mainImg, setMainImg] = useState(images[0]);
   const [open, setOpen] = useState([true, false, false]);
   const [quantity, setQuantity] = useState(1);
+  const [adding, setAdding] = useState(false);
 
   const toggleSection = (idx: number) => {
     setOpen(arr => arr.map((x, i) => (i === idx ? !x : x)));
@@ -112,6 +115,20 @@ export default function GiaoSacVanKyPage() {
   const handleQuantityChange = (val: number) => {
     if (val < 1) return;
     setQuantity(val);
+  };
+
+  const handleAddToCart = () => {
+    setAdding(true);
+    addToCart(
+      {
+        id: "giao-sac-van-ky",
+        name: "Giao Sắc Văn Kỳ",
+        price: 2499000,
+        image: mainImg
+      },
+      quantity
+    );
+    setTimeout(() => setAdding(false), 700); // Debounce for user experience
   };
 
   return (
@@ -248,35 +265,35 @@ export default function GiaoSacVanKyPage() {
                   const val = Math.max(1, parseInt(e.target.value) || 1);
                   setQuantity(val);
                 }}
-inputProps={{
-  min: 1,
-  style: {
-    textAlign: 'center',
-    width: 36,
-    fontWeight: 600,
-    fontSize: 18,
-    color: '#222',
-    border: 'none',
-    // Hide number input spinners for Chrome/Safari/Edge
-    MozAppearance: 'textfield',
-  },
-  // Hide for Firefox
-  inputMode: 'numeric',
-  pattern: '[0-9]*',
-}}
-sx={{
-  mx: 1.2,
-  fontWeight: 600,
-  fontSize: 18,
-  border: 'none',
-  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
-    WebkitAppearance: 'none',
-    margin: 0,
-  },
-  '& input[type=number]': {
-    MozAppearance: 'textfield',
-  }
-}}
+                inputProps={{
+                  min: 1,
+                  style: {
+                    textAlign: 'center',
+                    width: 36,
+                    fontWeight: 600,
+                    fontSize: 18,
+                    color: '#222',
+                    border: 'none',
+                    // Hide number input spinners for Chrome/Safari/Edge
+                    MozAppearance: 'textfield',
+                  },
+                  // Hide for Firefox
+                  inputMode: 'numeric',
+                  pattern: '[0-9]*',
+                }}
+                sx={{
+                  mx: 1.2,
+                  fontWeight: 600,
+                  fontSize: 18,
+                  border: 'none',
+                  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+                    WebkitAppearance: 'none',
+                    margin: 0,
+                  },
+                  '& input[type=number]': {
+                    MozAppearance: 'textfield',
+                  }
+                }}
               />
               <IconButton
                 size="small"
@@ -302,6 +319,8 @@ sx={{
                 '&:hover': { bgcolor: '#fff2df' },
                 textTransform: 'none'
               }}
+              onClick={handleAddToCart}
+              disabled={adding}
             >
               Thêm vào giỏ hàng
             </Button>

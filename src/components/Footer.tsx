@@ -45,7 +45,7 @@ const Footer = () => {
               Về chúng tôi
             </Typography>
             <MuiLink component={RouterLink} to="/gioi-thieu" display="block" color="inherit" underline="none" sx={ linkStyles }>Giới thiệu</MuiLink>
-            <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Cách chơi</MuiLink>
+            <MuiLink component={RouterLink} to="/cach-choi" display="block" color="inherit" underline="none" sx={ linkStyles }>Cách chơi</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Cam kết</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Press</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Blog</MuiLink>
@@ -82,7 +82,7 @@ const Footer = () => {
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Giao hàng</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Bảo mật</MuiLink>
             <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Khuyến mãi</MuiLink>
-            <MuiLink component={RouterLink} to="/lien-he" display="block" color="inherit" underline="none" sx={ linkStyles }>Liên hệ</MuiLink>
+            <MuiLink href="#" display="block" color="inherit" underline="none" sx={ linkStyles }>Liên hệ</MuiLink>
           </Grid>
 
         </Grid>

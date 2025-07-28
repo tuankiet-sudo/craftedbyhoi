@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CatalogPage = () => {
     const page = useParams<{ page?: string }>().page;
+    console.log("CatalogPage page:", page);
 
     if (page) {
         const src= `https://heyzine.com/flip-book/a799c6d307.html#page/${page}`;

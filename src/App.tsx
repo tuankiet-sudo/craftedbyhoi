@@ -16,11 +16,13 @@ import GSVKPage from './components/GSVKPage';
 import { CartProvider } from './components/cartContext';
 import CartPage from './components/CartPage';
 import CheckoutPage from './components/Checkout';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <CartProvider>
     <BrowserRouter>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

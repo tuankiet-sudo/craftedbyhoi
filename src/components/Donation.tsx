@@ -40,14 +40,14 @@ function Step1({ onNext, form, setForm }: any) {
           variant="contained"
           color="primary"
           size="large"
-          sx={{ mt: 2, px: 6, py: 1.4, fontWeight: 600, borderRadius: 2, bgcolor: "#66431b", '&:hover': { bgcolor: "#001524" } }}
+          sx={{ mt: 2, px: 6, py: 1.4, fontWeight: 600, borderRadius: 2, bgcolor: "#66431b", '&:hover': { bgcolor: "#fff", color: '#66431b' } }}
           onClick={onNext}
           disabled={!form.name || !form.email || !form.phone}
         >
           Xác nhận
         </Button>
       </Grid>
-      <Grid size={{xs:12, md:6}} sx={{ bgcolor: "#faf9ee", px: { xs: 2, md: 5 }, py: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <Grid size={{xs:12, md:6}} sx={{ bgcolor: "#fff", px: { xs: 2, md: 5 }, py: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Typography sx={{ fontSize: 18, color: '#66431b', fontWeight: 600, mb: 2 }}>
           Hành trình lan tỏa di sản
         </Typography>
@@ -104,7 +104,7 @@ function Step2({ onNext, receipt, setReceipt }: any) {
           variant="contained"
           color="primary"
           size="large"
-          sx={{ mt: 4, px: 6, py: 1.4, fontWeight: 600, borderRadius: 2, bgcolor: "#66431b", '&:hover': { bgcolor: "#001524" } }}
+          sx={{ mt: 4, px: 6, py: 1.4, fontWeight: 600, borderRadius: 2, bgcolor: "#66431b", '&:hover': { bgcolor: "#fff", color: "#66431b" } }}
           onClick={onNext}
           disabled={!receipt}
         >
@@ -138,10 +138,22 @@ export default function DonationPage() {
   const [receipt, setReceipt] = useState<File | null>(null);
 
   return (
-    <Box sx={{ maxWidth: 1100, mx: "auto", minHeight: "65vh", py: 7 }}>
-      {step === 1 && <Step1 onNext={() => setStep(2)} form={form} setForm={setForm} />}
-      {step === 2 && <Step2 onNext={() => setStep(3)} receipt={receipt} setReceipt={setReceipt} />}
-      {step === 3 && <Step3 email={form.email} />}
+    <Box sx={{
+      width: '100%',
+      backgroundImage: 'url(/aboutus_background.jpg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    }}>
+      <Box sx={{ 
+        maxWidth: 1100, 
+        mx: "auto", 
+        minHeight: "65vh", 
+        py: 7, 
+      }}>
+        {step === 1 && <Step1 onNext={() => setStep(2)} form={form} setForm={setForm} />}
+        {step === 2 && <Step2 onNext={() => setStep(3)} receipt={receipt} setReceipt={setReceipt} />}
+        {step === 3 && <Step3 email={form.email} />}
+      </Box>
     </Box>
   );
 }

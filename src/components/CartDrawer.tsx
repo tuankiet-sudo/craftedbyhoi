@@ -31,7 +31,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean, onClose: 
         }}
     >
       <Box sx={{ p: 2, pb: 1, display: 'flex', alignItems: 'center', borderBottom: '1.5px solid #eee' }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, flex: 1 }}>Giỏ hàng</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 700, flex: 1, fontSize: 23 }}>Giỏ hàng</Typography>
         <IconButton onClick={onClose}><CloseIcon /></IconButton>
       </Box>
       <Box sx={{ p: 2, minHeight: 180 }}>
@@ -72,7 +72,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean, onClose: 
             <Typography sx={{ fontWeight: 700, fontSize: 23 }}>
                 Tổng cộng
             </Typography>
-            <Typography sx={{ fontWeight: 700, fontSize: 28, color: "#001524" }}>
+            <Typography sx={{ fontWeight: 700, fontSize: 23, color: "#001524" }}>
                 {total.toLocaleString('vi-VN')}₫
             </Typography>
             </Box>
@@ -108,7 +108,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean, onClose: 
                 sx={{
                 py: 1.6,
                 fontSize: 17,
-                fontWeight: 600,
+                fontWeight: 700,
                 borderRadius: 2,
                 borderColor: "#66431b",
                 color: "#66431b",

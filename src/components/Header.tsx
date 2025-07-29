@@ -1,101 +1,110 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Button, Box, Menu, MenuItem, IconButton } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, Button, Box, Menu, MenuItem, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Collapse } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Fade } from '@mui/material';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from './cartContext';
 import CartDrawer from './CartDrawer';
 
-const Header = () => {
+export default function Header() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const { cart } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+
+  // For desktop dropdown
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
   const navButtonStyles = {
-    color: 'black',
+    color: '#001524',
     textTransform: 'none',
     fontSize: '1rem',
     margin: '16px 8px',
+    display: { xs: 'none', md: 'inline-flex' },
     '&:hover': {
       backgroundColor: 'transparent',
-      color: 'grey',
+      color: '#66431b',
     },
   };
 
-  // Styles for dropdown menu items
-const menuItemStyles = {
-  color: 'black',
-  backgroundColor: 'transparent',
-  transition: 'all 0.22s cubic-bezier(.3,.6,.3,1)',
-  pr: 2.5, // or px: '24px' (space left and right)
-  borderRadius: 2, // so highlight is rounded and doesn’t touch edge
-  marginRight: 1, // optional, for even more margin
-  '&:hover': {
-    color: '#66431b',
-    backgroundColor: '#f7efe3',
-    boxShadow: '0 2px 8px 0 #f7efe344',
-    transform: 'translateX(8px) scale(1.03)',
-  },
-};
+  // Desktop dropdown menu items
+  const menuItemStyles = {
+    color: '#001524',
+    backgroundColor: 'transparent',
+    transition: 'all 0.22s cubic-bezier(.3,.6,.3,1)',
+    pr: 2.5,
+    borderRadius: 2,
+    marginRight: 1,
+    '&:hover': {
+      color: '#66431b',
+      backgroundColor: '#f7efe3',
+      boxShadow: '0 2px 8px 0 #f7efe344',
+      transform: 'translateX(8px) scale(1.03)',
+    },
+  };
 
-  // ---- Products Button Handlers ----
+  // Cart item count
+  const cartCount = cart?.reduce?.((sum, item) => sum + item.quantity, 0) || 0;
+
+  // Desktop dropdown handlers
   const handleProductsButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    // Only open menu on hover, not on click
-    if (event.type === 'mouseenter') {
-      setAnchorEl(event.currentTarget);
-    }
+    if (event.type === 'mouseenter') setAnchorEl(event.currentTarget);
   };
-
   const handleProductsButtonMouseLeave = () => {
-    setTimeout(() => {
-      setAnchorEl(null);
-    }, 120); // allow time for pointer to move to Menu
+    setTimeout(() => setAnchorEl(null), 120);
   };
-
   const handleMenuClose = () => setAnchorEl(null);
-
   const handleMenuItemClick = (path: string) => {
     navigate(path);
     handleMenuClose();
   };
 
-  // ---- Navigation Handler ----
-  const handleProductsClick = () => {
-    // Only trigger on actual click, not on hover
-    navigate('/san-pham');
-    handleMenuClose();
+  // Mobile drawer navigation
+  const handleDrawerNav = (path: string) => {
+    setMobileNavOpen(false);
+    navigate(path);
   };
-
-  // Styles (as before) ...
 
   return (
     <AppBar position="sticky" elevation={1} sx={{ backgroundColor: 'white' }}>
-      <Toolbar>
+      <Toolbar sx={{ minHeight: { xs: 60, md: 72 } }}>
+        {/* Hamburger menu icon - mobile only */}
+        <IconButton
+          edge="start"
+          sx={{ display: { xs: 'inline-flex', md: 'none' }, mr: 1, color: "#001524" }}
+          onClick={() => setMobileNavOpen(true)}
+          aria-label="Mở menu"
+        >
+          <MenuIcon fontSize="large" />
+        </IconButton>
+
+        {/* Logo */}
         <Box sx={{ flexGrow: 1 }}>
           <Link to="/">
             <img
               src="/HOI_LOGO.png"
               alt="CraftedbyHoi Logo"
-              style={{ height: '50px', display: 'block', padding: '4px 16px' }}
+              style={{
+                height: 40,
+                display: 'block',
+                padding: '4px 8px',
+                maxWidth: 160,
+              }}
             />
           </Link>
         </Box>
 
-        {/* Navigation Links */}
-        <Button sx={navButtonStyles} component={Link} to="/">
-          Trang chủ
-        </Button>
-        <Button sx={navButtonStyles} component={Link} to="/gioi-thieu">
-          Giới thiệu
-        </Button>
-
-        {/* --- PRODUCTS BUTTON --- */}
+        {/* Desktop Nav Buttons */}
+        <Button sx={navButtonStyles} component={Link} to="/">Trang chủ</Button>
+        <Button sx={navButtonStyles} component={Link} to="/gioi-thieu">Giới thiệu</Button>
+        {/* Products dropdown - desktop only */}
         <Box
-          sx={{ position: 'relative', display: 'inline-block' }}
+          sx={{ position: 'relative', display: { xs: 'none', md: 'inline-block' } }}
           onMouseEnter={handleProductsButtonClick}
           onMouseLeave={handleProductsButtonMouseLeave}
         >
@@ -105,8 +114,8 @@ const menuItemStyles = {
             aria-controls={open ? 'products-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
-            onClick={handleProductsClick} // ← this is the KEY for navigation
-            component="button" // NOT Link! (else it’ll navigate on hover too)
+            onClick={() => handleMenuItemClick('/san-pham')}
+            component="button"
           >
             Sản phẩm
           </Button>
@@ -119,16 +128,8 @@ const menuItemStyles = {
               onMouseLeave: handleMenuClose,
               'aria-labelledby': 'products-button',
             }}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            TransitionComponent={Fade} // <--- Smooth fade
-            transitionDuration={300}   // <--- Adjust speed if desired
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
             PaperProps={{
               sx: {
                 backgroundColor: 'white',
@@ -141,36 +142,71 @@ const menuItemStyles = {
               }
             }}
           >
-            <MenuItem
-              sx={menuItemStyles}
-              onClick={() => handleMenuItemClick('/san-pham')}
-            >
-              Tất cả sản phẩm
-            </MenuItem>
-            <MenuItem
-              sx={menuItemStyles}
-              onClick={() => handleMenuItemClick('/san-pham/giao-sac-van-ky')}
-            >
-              Giao Sắc Văn Kỳ
-            </MenuItem>
+            <MenuItem sx={menuItemStyles} onClick={() => handleMenuItemClick('/san-pham')}>Tất cả sản phẩm</MenuItem>
+            <MenuItem sx={menuItemStyles} onClick={() => handleMenuItemClick('/san-pham/giao-sac-van-ky')}>Giao Sắc Văn Kỳ</MenuItem>
           </Menu>
         </Box>
-        <Button sx={navButtonStyles} component={Link} to="/quyen-gop">
-          Quyên góp
-        </Button>
-      <IconButton
-        sx={{ ml: 2, color: "#001524" }}
-        onClick={() => setCartOpen(true)}
-        aria-label="Giỏ hàng"
-      >
-        <Badge badgeContent={cart.reduce((sum, item) => sum + item.quantity, 0)} color="error">
-          <ShoppingCartIcon fontSize="large" />
-        </Badge>
-      </IconButton>
-      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+        <Button sx={navButtonStyles} component={Link} to="/quyen-gop">Quyên góp</Button>
+        
+        {/* Cart Icon */}
+        <IconButton
+          sx={{ ml: 2, color: "#001524" }}
+          onClick={() => setCartOpen(true)}
+          aria-label="Giỏ hàng"
+        >
+          <Badge badgeContent={cartCount} color="error">
+            <ShoppingCartIcon fontSize="large" />
+          </Badge>
+        </IconButton>
+        <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+
+        {/* Drawer for Mobile Nav */}
+        <Drawer
+          anchor="left"
+          open={mobileNavOpen}
+          onClose={() => setMobileNavOpen(false)}
+          PaperProps={{ sx: { width: 270, pt: 2, bgcolor: "#fff" } }}
+        >
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleDrawerNav('/')}>
+                <ListItemText primary="Trang chủ" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleDrawerNav('/gioi-thieu')}>
+                <ListItemText primary="Giới thiệu" />
+              </ListItemButton>
+            </ListItem>
+            {/* Products collapsible group */}
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => setMobileProductsOpen((v) => !v)}>
+                <ListItemText primary="Sản phẩm" />
+                {mobileProductsOpen ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+              </ListItemButton>
+            </ListItem>
+            <Collapse in={mobileProductsOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem disablePadding>
+                  <ListItemButton sx={{ pl: 4 }} onClick={() => handleDrawerNav('/san-pham')}>
+                    <ListItemText primary="Tất cả sản phẩm" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton sx={{ pl: 4 }} onClick={() => handleDrawerNav('/san-pham/giao-sac-van-ky')}>
+                    <ListItemText primary="Giao Sắc Văn Kỳ" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Collapse>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleDrawerNav('/quyen-gop')}>
+                <ListItemText primary="Quyên góp" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Drawer>
       </Toolbar>
     </AppBar>
   );
-};
-
-export default Header;
+}

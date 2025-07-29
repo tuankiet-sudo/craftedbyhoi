@@ -27,16 +27,48 @@ const Ticker = () => {
         }}
       >
         {/* We render the text multiple times to fill the screen and create the loop */}
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
       </Box>
@@ -52,16 +84,48 @@ const Ticker = () => {
           ariaHidden: 'true', 
         }}
       >
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
-        <Typography variant="h2" component="span" sx={{ padding: '0 4rem', fontStyle: 'italic', fontWeight: 'bold' }}>
+        <Typography
+          variant="h4" // use h4 on xs, h2 on md+
+          sx={{
+            padding: { xs: '0 0.25rem', md: '0 4rem' },
+            fontStyle: 'italic',
+            fontWeight: 'bold',
+            fontSize: { xs: 20, md: 32 }
+          }}
+        >
           {text}
         </Typography>
       </Box>

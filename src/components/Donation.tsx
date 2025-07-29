@@ -138,21 +138,54 @@ export default function DonationPage() {
   const [receipt, setReceipt] = useState<File | null>(null);
 
   return (
-    <Box sx={{
-      width: '100%',
-      backgroundImage: 'url(/aboutus_background.jpg)',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-    }}>
-      <Box sx={{ 
-        maxWidth: 1100, 
-        mx: "auto", 
-        minHeight: "65vh", 
-        py: 7, 
-      }}>
-        {step === 1 && <Step1 onNext={() => setStep(2)} form={form} setForm={setForm} />}
-        {step === 2 && <Step2 onNext={() => setStep(3)} receipt={receipt} setReceipt={setReceipt} />}
-        {step === 3 && <Step3 email={form.email} />}
+    <Box
+      sx={{
+        width: '100vw',
+        minHeight: "100vh",
+        position: "relative",
+        backgroundImage: 'url(/aboutus_background.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: "center",
+        // Always cover viewport, no horizontal scroll
+        overflowX: 'hidden'
+      }}
+    >
+      {/* Overlay for contrast */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(255,255,255,0.85)",
+          zIndex: 0,
+        }}
+      />
+      {/* Main content container */}
+      <Box
+        sx={{
+          maxWidth: 1100,
+          mx: "auto",
+          minHeight: "65vh",
+          py: { xs: 4, md: 7 },
+          position: "relative",
+          zIndex: 1,
+          px: { xs: 1, md: 0 },
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            borderRadius: 5,
+            p: { xs: 2, md: 5 },
+            background: { xs: 'rgba(255,255,255,0.97)', md: '#fff' },
+            boxShadow: '0 4px 32px 0 #eedcc366',
+            minHeight: { xs: 440, md: 500 }
+          }}
+        >
+          {step === 1 && <Step1 onNext={() => setStep(2)} form={form} setForm={setForm} />}
+          {step === 2 && <Step2 onNext={() => setStep(3)} receipt={receipt} setReceipt={setReceipt} />}
+          {step === 3 && <Step3 email={form.email} />}
+        </Paper>
       </Box>
     </Box>
   );

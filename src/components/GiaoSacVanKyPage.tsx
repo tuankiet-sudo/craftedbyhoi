@@ -10,19 +10,22 @@ import {
   Paper,
   Stack,
   InputBase,
+  useMediaQuery
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import  {useCart } from './cartContext';
+import { useCart } from './cartContext';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 const images = [
   '/main4.png',
   '/main1.png',
   '/main2.png',
-  '/main3.png'
+  '/main3.png',
+  '/main5.png'
 ];
 
 const DESCRIPTION = [
@@ -110,6 +113,8 @@ export default function GiaoSacVanKyPage() {
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const toggleSection = (idx: number) => {
     setOpen(arr => arr.map((x, i) => (i === idx ? !x : x)));
@@ -148,13 +153,31 @@ export default function GiaoSacVanKyPage() {
   };
 
   return (
-    <Box sx={{ maxWidth: 1450, mx: 'auto', pt: 5, pb: 12, px: 2 }}>
-      <Grid container spacing={5}>
+    <Box sx={{ maxWidth: 1450, mx: 'auto', pt: { xs: 3, md: 5 }, pb: { xs: 7, md: 12 }, px: { xs: 3, md: 2 } }}>
+      <Grid container spacing={{ xs: 2, md: 5 }}>
         {/* Left: Image Gallery */}
-        <Grid size={{xs:12, md:7, lg:7}}>
-          <Box sx={{ display: 'flex', alignItems: 'flex-start', height: 500 }}>
+        <Grid size={{ xs: 12, md: 7, lg: 7 }} order={{ xs: 1, md: 1 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { xs: 'center', md: 'flex-start' },
+              height: { xs: 'auto', md: 500 }
+            }}
+          >
             {/* Thumbnails */}
-            <Stack spacing={2} sx={{ mr: 2, mt: 1, height: 440 }}>
+            <Stack
+              spacing={2}
+              direction={{ xs: 'row', md: 'column' }}
+              sx={{
+                mb: { xs: 2, md: 0 },
+                mr: { xs: 0, md: 2 },
+                mt: { xs: 0, md: 1 },
+                height: { xs: 'auto', md: 440 },
+                width: { xs: '100%', md: 'auto' },
+                justifyContent: { xs: 'center', md: 'flex-start' }
+              }}
+            >
               {images.map(img => (
                 <Box
                   key={img}
@@ -163,8 +186,8 @@ export default function GiaoSacVanKyPage() {
                   alt="thumbnail"
                   onClick={() => setMainImg(img)}
                   sx={{
-                    width: 64,
-                    height: 64,
+                    width: { xs: 58, md: 64 },
+                    height: { xs: 58, md: 64 },
                     objectFit: 'cover',
                     borderRadius: 2,
                     cursor: 'pointer',
@@ -180,7 +203,8 @@ export default function GiaoSacVanKyPage() {
               elevation={0}
               sx={{
                 flex: 1,
-                minHeight: 400,
+                minHeight: { xs: 180, md: 400 },
+                width: { xs: '100%', md: 'auto' },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -194,8 +218,8 @@ export default function GiaoSacVanKyPage() {
                 src={mainImg}
                 alt="Giao Sắc Văn Kỳ"
                 style={{
-                  maxWidth: '92%',
-                  maxHeight: 440,
+                  maxWidth: '94%',
+                  maxHeight: isMobile ? 240 : 440,
                   objectFit: 'contain',
                   borderRadius: 12
                 }}
@@ -205,11 +229,26 @@ export default function GiaoSacVanKyPage() {
         </Grid>
 
         {/* Right: Info & Dropdowns */}
-        <Grid size={{xs:12, md:5, lg:5}} maxWidth={1000}>
-          <Typography variant="h3" sx={{ fontWeight: 700, color: '#001524', mb: 2 }}>
+        <Grid size={{ xs: 12, md: 5, lg: 5 }} order={{ xs: 2, md: 2 }} maxWidth={1000}>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 700,
+              color: '#001524',
+              mb: 2,
+              fontSize: { xs: 22, md: 32 }
+            }}
+          >
             Giao Sắc Văn Kỳ
           </Typography>
-          <Typography sx={{ fontSize: 28, color: '#66431b', fontWeight: 500, mb: 3 }}>
+          <Typography
+            sx={{
+              fontSize: { xs: 22, md: 28 },
+              color: '#66431b',
+              fontWeight: 500,
+              mb: 3
+            }}
+          >
             2.499.000₫
           </Typography>
           {/* Dropdown Sections */}
@@ -221,10 +260,14 @@ export default function GiaoSacVanKyPage() {
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  py: 1.5
+                  py: 1.2
                 }}
               >
-                <Typography sx={{ fontWeight: 600, fontSize: 19, flex: 1 }}>
+                <Typography sx={{
+                  fontWeight: 600,
+                  fontSize: { xs: 16, md: 19 },
+                  flex: 1
+                }}>
                   {sec.label}
                 </Typography>
                 <IconButton
@@ -247,24 +290,49 @@ export default function GiaoSacVanKyPage() {
           ))}
           {/* Community box */}
           <Box sx={{
-            p: 2.5,
-            mt: 3,
+            p: { xs: 2, md: 2.5 },
+            mt: { xs: 2, md: 3 },
             border: '1.5px solid #eee',
             borderRadius: 2,
             bgcolor: '#faf9ee'
           }}>
-            <Typography sx={{ fontSize: 20, color: '#66431b', fontWeight: 700 }}>
+            <Typography sx={{
+              fontSize: { xs: 16, md: 20 },
+              color: '#66431b',
+              fontWeight: 700
+            }}>
               Cùng bạn viết tiếp câu chuyện di sản
             </Typography>
-            <Typography sx={{ color: '#222', mt: 1, fontSize: 15.5 }}>
+            <Typography sx={{
+              color: '#222',
+              mt: 1,
+              fontSize: { xs: 13.5, md: 15.5 }
+            }}>
               {COMMUNITY}
             </Typography>
           </Box>
-          <Box sx={{
-            mt: 4, display: 'flex', alignItems: 'center', gap: 3, flexWrap: 'wrap'
-          }}>
+          <Box
+            sx={{
+              mt: { xs: 3, md: 4 },
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: { xs: 'stretch', sm: 'center' },
+              gap: 2.5,
+              flexWrap: 'wrap'
+            }}
+          >
             {/* Quantity selector */}
-            <Box sx={{ display: 'flex', alignItems: 'center', border: '1.3px solid #ececec', borderRadius: 2, p: '6px 16px' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                border: '1.3px solid #ececec',
+                borderRadius: 2,
+                p: { xs: '4px 10px', md: '6px 16px' },
+                width: { xs: '100%', sm: 'auto' },
+                justifyContent: 'center'
+              }}
+            >
               <IconButton
                 size="small"
                 aria-label="Giảm số lượng"
@@ -290,10 +358,8 @@ export default function GiaoSacVanKyPage() {
                     fontSize: 18,
                     color: '#222',
                     border: 'none',
-                    // Hide number input spinners for Chrome/Safari/Edge
                     MozAppearance: 'textfield',
                   },
-                  // Hide for Firefox
                   inputMode: 'numeric',
                   pattern: '[0-9]*',
                 }}
@@ -324,10 +390,11 @@ export default function GiaoSacVanKyPage() {
             <Button
               variant="contained"
               sx={{
-                px: 4,
-                py: 1.6,
+                width: { xs: '100%', sm: 'auto' },
+                px: 2.5,
+                py: 1.2,
                 fontWeight: 600,
-                fontSize: '1rem',
+                fontSize: { xs: '0.98rem', md: '1rem' },
                 bgcolor: '#ffe8c2',
                 color: '#66431b',
                 borderRadius: 2,
@@ -343,10 +410,11 @@ export default function GiaoSacVanKyPage() {
             <Button
               variant="contained"
               sx={{
-                px: 4,
-                py: 1.6,
+                width: { xs: '100%', sm: 'auto' },
+                px: 2.5,
+                py: 1.2,
                 fontWeight: 600,
-                fontSize: '1rem',
+                fontSize: { xs: '0.98rem', md: '1rem' },
                 bgcolor: '#66431b',
                 color: '#fff',
                 borderRadius: 2,

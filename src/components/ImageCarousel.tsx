@@ -63,7 +63,7 @@ const ImageCarousel = () => {
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              style={{ width: '100%', height: 'calc(100vh - 64px)', objectFit: 'cover' }}
+              style={{ width: '100%', height: window.innerWidth < 600 ? 240 : 'calc(100vh - 64px)', objectFit: 'cover' }}
             />
           </div>
         ))}

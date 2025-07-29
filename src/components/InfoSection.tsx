@@ -1,5 +1,5 @@
 import { Box, Typography, Grid, Container } from '@mui/material';
-
+import React from 'react';
 // Import the icons from Material-UI
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
@@ -26,30 +26,43 @@ const infoItems = [
 
 const InfoSection = () => {
   return (
-    <Box sx={{ backgroundColor: '#DCCFC0', py: 12, textAlign: 'center' }} >
+    <Box sx={{ backgroundColor: '#DCCFC0', py: { xs: 6, md: 12 }, textAlign: 'center' }}>
       <Container maxWidth={false}>
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 3, md: 4 }}>
           {infoItems.map((item, index) => (
-            <Grid size={{xs:12, md:4}} key={index}>
+            <Grid size={{ xs: 12, md: 4 }} key={index}>
               <Box
                 sx={{
+                  width: { xs: 54, md: 80 },
+                  height: { xs: 54, md: 80 },
+                  mb: { xs: 1.5, md: 2 },
+                  mx: 'auto',
                   display: 'flex',
-                  justifyContent: 'center',
                   alignItems: 'center',
-                  width: 80,
-                  height: 80,
+                  justifyContent: 'center',
                   borderRadius: '50%',
                   backgroundColor: '#FAF9EE',
-                  mb: 2,
-                  mx: 'auto', // Center the circle horizontally
                 }}
               >
-                {item.icon}
+                {/* Adjust icon size with sx */}
+                {React.cloneElement(item.icon, { sx: { fontSize: { xs: 26, md: 35 } } })}
               </Box>
-              <Typography variant="h5" component="h3" sx={{ fontWeight: 'bold', my: 3, color: '#001524' }}>
+              <Typography
+                variant="h6"
+                component="h3"
+                sx={{ fontWeight: 'bold', my: { xs: 1, md: 3 }, color: '#001524', fontSize: { xs: 16, md: 22 } }}
+              >
                 {item.title}
               </Typography>
-              <Typography variant="body2" sx={{ color: '#001524', px: 2, fontSize: '1rem', fontWeight: '500' }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: '#001524',
+                  px: 2,
+                  fontSize: { xs: 13.5, md: '1rem' },
+                  fontWeight: '500'
+                }}
+              >
                 {item.description}
               </Typography>
             </Grid>

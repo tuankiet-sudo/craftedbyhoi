@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import ProductsFilterSidebar from './ProductsFilterSidebar'; // Use the sidebar from previous response
 import { useCart } from './cartContext';
+import { Drawer } from '@mui/material';
 
 const productsData = [
   {
@@ -38,6 +39,7 @@ export default function ProductsPage() {
   const [hover, setHover] = useState(false);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
 
   // Filtering logic
   const filtered = productsData.filter(p => {
@@ -97,9 +99,65 @@ export default function ProductsPage() {
         />
       </Box>
 
+      <Drawer
+        anchor="left"
+        open={filterDrawerOpen}
+        onClose={() => setFilterDrawerOpen(false)}
+        PaperProps={{
+          sx: { width: 320, maxWidth: '100vw', p: 1.5 }
+        }}
+      >
+        <ProductsFilterSidebar
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          value={priceRange}
+          onPriceChange={setPriceRange}
+          onAvailableChange={setAvailableOnly}
+          available={availableOnly}
+          onTypeChange={setTypeChecked}
+          typeChecked={typeChecked}
+        />
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{
+            mt: 2,
+            bgcolor: "#66431b",
+            color: "#fff",
+            borderRadius: 2,
+            py: 1.3,
+            fontWeight: 600,
+            fontSize: 16,
+            '&:hover': { bgcolor: "#fff", color: "#66431b", border: '2px solid #66431b' }
+          }}
+          onClick={() => setFilterDrawerOpen(false)}
+        >
+          Xem sản phẩm
+        </Button>
+      </Drawer>
+
       {/* PRODUCT GRID */}
       <Box flex={1} pl={{ md: 6 }} pt={1} >
-<Box sx={{ minHeight: 64, mb: 3, display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end', mb: 2, pr: 2 }}>
+  <Button
+    variant="outlined"
+    sx={{
+      borderRadius: 2,
+      fontWeight: 600,
+      borderColor: '#66431b',
+      color: '#66431b',
+      bgcolor: '#fff',
+      px: 2.5,
+      py: 1,
+      fontSize: 16,
+      '&:hover': { bgcolor: '#f7efe3', borderColor: '#66431b' }
+    }}
+    onClick={() => setFilterDrawerOpen(true)}
+  >
+    Lọc sản phẩm
+  </Button>
+</Box>
+      <Box sx={{ minHeight: 64, mb: 3, display: {md: 'flex', xs: 'none'}, alignItems: 'center' }}>
         <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
           {chips.map(chip => (
             <Chip
@@ -172,7 +230,7 @@ export default function ProductsPage() {
                       bgcolor: '#66431b',
                       color: '#fff',
                       textTransform: 'none',
-                      opacity: hover ? 1 : 0,
+                      opacity: {xs: 1, md: hover ? 1 : 0 },
                       pointerEvents: hover ? 'auto' : 'none',
                       transition: 'opacity 0.3s cubic-bezier(.3,.6,.3,1)',
                       boxShadow: 'none',

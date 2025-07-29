@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import {
   Box, Grid, Typography, TextField, FormControlLabel, Checkbox, Button,
-  Select, MenuItem, InputAdornment, Divider, Stack, IconButton,RadioGroup, Radio, FormLabel
+  Select, MenuItem, InputAdornment, Divider, Stack, IconButton,RadioGroup, Radio, FormLabel, Dialog, DialogContent, DialogActions
 } from '@mui/material';
 import { useCart } from './cartContext'; // adjust path as needed
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { useNavigate } from 'react-router-dom';
 
 const COUNTRIES = ['Việt Nam', 'United States','Canada','Australia','Japan','South Korea','Singapore','Taiwan','France','Germany','United Kingdom'];
 const SHIPPING_COST = 0;
@@ -25,6 +27,9 @@ export default function CheckoutPage() {
   const [saveInfo, setSaveInfo] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const {clearCart}= useCart();
 
   // Simple sum
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -138,10 +143,7 @@ export default function CheckoutPage() {
     borderRadius: 2,
     '&:hover': { bgcolor: "#fff", color: "#66431b" }
   }}
-  onClick={() => {
-    // Replace with real order logic!
-    alert("Đơn hàng của bạn đã được ghi nhận!");
-  }}
+  onClick={() => setOpen(true)}
 >
   Hoàn tất đơn hàng
 </Button>
@@ -254,6 +256,40 @@ export default function CheckoutPage() {
           </Box>
         </Grid>
       </Grid>
+      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="xs" PaperProps={{ sx: { borderRadius: 4, p: 2 } }}>
+  <DialogContent sx={{ textAlign: "center", py: 4 }}>
+    <CheckCircleRoundedIcon sx={{ fontSize: 56, color: "#66431b", mb: 2 }} />
+    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: "#66431b" }}>
+      Đặt hàng thành công!
+    </Typography>
+    <Typography sx={{ color: "#222", mb: 2, fontSize: 16 }}>
+      Cảm ơn bạn đã tin tưởng và ủng hộ HỘI.<br />
+      Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý trong thời gian sớm nhất.
+    </Typography>
+  </DialogContent>
+  <DialogActions sx={{ justifyContent: "center", pb: 3 }}>
+    <Button
+      variant="contained"
+      sx={{
+        bgcolor: "#66431b",
+        color: "#fff",
+        px: 4,
+        py: 1.2,
+        fontWeight: 600,
+        borderRadius: 2,
+        fontSize: 16,
+        '&:hover': { bgcolor: "#fff", color: "#66431b"}
+      }}
+      onClick={() => {
+        clearCart();
+        setOpen(false);
+        navigate('/san-pham');
+      }}
+    >
+      Tiếp tục mua sắm
+    </Button>
+  </DialogActions>
+</Dialog>
     </Box>
   );
 }

@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 // Change this path to your real image
-const howtoImage = "/HOI_LOGO.png";
+const howtoImage = "/BanCo.png";
 
 export default function HowToPlayPage() {
   return (
@@ -12,7 +12,7 @@ export default function HowToPlayPage() {
         sx={{
           textAlign: "center",
           fontWeight: 700,
-          mb: { xs: 5, md: 8 },
+          mb: { xs: 5, md: 4 },
           fontSize: { xs: 32, md: 56 },
           letterSpacing: "-0.02em"
         }}
@@ -21,7 +21,7 @@ export default function HowToPlayPage() {
       </Typography>
 
       {/* Main content */}
-      <Grid container spacing={3} alignItems="center" justifyContent="center" alignSelf={'center'}>
+      <Grid container spacing={1} alignItems="center" justifyContent="center" alignSelf={'center'}>
         {/* Image left */}
         <Grid size={{xs:12, md:6}} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box
@@ -29,11 +29,12 @@ export default function HowToPlayPage() {
             src={howtoImage}
             alt="Giao Sắc Văn Kỳ"
             sx={{
-              maxWidth: { xs: "100%", md: 500 },
+              maxWidth: { xs: "100%", md: 450 },
               width: "100%",
               height: "auto",
               borderRadius: 2,
-              boxShadow: "0 6px 36px 0 #eee"
+              boxShadow: "0 6px 36px 0 #eee",
+              mb: 4,
             }}
           />
         </Grid>
@@ -64,7 +65,7 @@ export default function HowToPlayPage() {
               borderRadius: 2,
               boxShadow: 'none',
               '&:hover': {
-                bgcolor: "#ffefd1",
+                bgcolor: "#fff",
                 color: "#66431b"
               }
             }}

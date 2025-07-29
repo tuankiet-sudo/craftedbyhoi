@@ -17,8 +17,8 @@ const productsData = [
     name: 'Giao Sắc Văn Kỳ',
     price: 2499000,
     images: [
-      '/HOI_ICON.png', // main
-      '/aboutus_background.jpg', // hover
+      '/giao-sac-van-ky-1.jpg', // main
+      '/giao-sac-van-ky-2.jpg', // hover
     ],
     available: true,
     type: 'Cờ tỷ phú',
@@ -67,7 +67,7 @@ export default function ProductsPage() {
         id: "giao-sac-van-ky",
         name: "Giao Sắc Văn Kỳ",
         price: 2499000,
-        image: '/mainImg.jpg'
+        image: '/giao-sac-van-ky-1.jpg'
       },
       1
     );

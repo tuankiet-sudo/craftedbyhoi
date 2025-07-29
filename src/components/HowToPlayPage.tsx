@@ -51,8 +51,8 @@ export default function HowToPlayPage() {
             Giao Sắc Văn Kỳ
           </Typography>
           <Button
-  component={Link}
-  to="/cach-choi/giao-sac-van-ky"
+            component={Link}
+            to="/cach-choi/giao-sac-van-ky"
             variant="contained"
             sx={{
               bgcolor: "#66431b",

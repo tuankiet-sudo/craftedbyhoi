@@ -5,13 +5,15 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Fade } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
-import { useCart } from './cartContext'; // import path as needed
+import { useCart } from './cartContext';
+import CartDrawer from './CartDrawer';
 
 const Header = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { cart } = useCart();
+  const [cartOpen, setCartOpen] = useState(false);
 
   const navButtonStyles = {
     color: 'black',
@@ -153,15 +155,16 @@ const Header = () => {
         <Button sx={navButtonStyles} component={Link} to="/quyen-gop">
           Quyên góp
         </Button>
-                <IconButton
-          sx={{ ml: 2, color: "#001524" }}
-          onClick={() => navigate("/gio-hang")}
-          aria-label="Giỏ hàng"
-        >
-          <Badge badgeContent={cart.reduce((sum, item) => sum + item.quantity, 0)} color="error">
-            <ShoppingCartIcon fontSize="large" />
-          </Badge>
-        </IconButton>
+      <IconButton
+        sx={{ ml: 2, color: "#001524" }}
+        onClick={() => setCartOpen(true)}
+        aria-label="Giỏ hàng"
+      >
+        <Badge badgeContent={cart.reduce((sum, item) => sum + item.quantity, 0)} color="error">
+          <ShoppingCartIcon fontSize="large" />
+        </Badge>
+      </IconButton>
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
       </Toolbar>
     </AppBar>
   );

@@ -19,9 +19,9 @@ import  {useCart } from './cartContext';
 import { useNavigate } from 'react-router-dom';
 
 const images = [
-  '/images/giao-sac-van-ky-1.jpg',
-  '/images/giao-sac-van-ky-2.jpg',
-  '/images/giao-sac-van-ky-3.jpg'
+  '/giao-sac-van-ky-1.jpg',
+  '/giao-sac-van-ky-2.jpg',
+  '/giao-sac-van-ky-3.jpg'
 ];
 
 const DESCRIPTION = [

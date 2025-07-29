@@ -7,7 +7,7 @@ type FlipbookIframeProps = {
 };
 
 const FlipbookIframe: React.FC<FlipbookIframeProps> = ({
-  src = "https://heyzine.com/flip-book/3d3269ace6.html",
+  src = "https://heyzine.com/flip-book/2e1b7dba53.html",
   height = "calc(100vh - 64px)",
   width = "100%"
 }) => (

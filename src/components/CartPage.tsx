@@ -33,8 +33,19 @@ export default function CartPage() {
             Tổng: {total.toLocaleString('vi-VN')}₫
           </Typography>
           <Button 
-  component={Link}
-  to="/thanh-toan" variant="contained" color="primary" sx={{ mt: 2, bgcolor: "#66431b" }} >
+            component={Link}
+            to="/thanh-toan"
+            variant="contained"
+            sx={{
+              mt: 2,
+              bgcolor: "#66431b",
+              color: "#fff", // normal text color
+              '&:hover': {
+                bgcolor: "#001524",   // hovered background
+                color: "#fff"      // hovered text color
+              }
+            }}
+          >
             Thanh toán
           </Button>
         </Stack>

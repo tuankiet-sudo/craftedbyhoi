@@ -1,7 +1,7 @@
 import { Box, Typography, Container } from '@mui/material';
 
 // Update these paths to your actual images
-const heroBg = "/images/hoi-about-hero.jpg"; // Hero bg image
+const heroBg = "/hoi-about-hero.jpg"; // Hero bg image
 const contentBg = "/aboutus_background.jpg"; // Content paragraph bg
 
 export default function AboutPage() {
@@ -10,7 +10,7 @@ export default function AboutPage() {
       {/* Hero Section with overlayed background */}
       <Box
         sx={{
-          minHeight: { xs: 220, md: 380 },
+          minHeight: { xs: 220, md: 640 },
           width: '100%',
           display: 'flex',
           alignItems: 'center',
@@ -19,7 +19,7 @@ export default function AboutPage() {
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           '&::before': {
             content: '""',
             position: 'absolute',

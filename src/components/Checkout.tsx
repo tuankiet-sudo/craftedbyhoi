@@ -150,7 +150,7 @@ export default function CheckoutPage() {
         </Grid>
 
         {/* RIGHT: Cart summary */}
-        <Grid size={{xs:12, md:5, lg:4}}>
+        <Grid size={{xs:12, md:5, lg:4}} position={'sticky'}>
           <Box sx={{
             bgcolor: '#f6f6f6',
             p: { xs: 2, md: 4 },
@@ -245,9 +245,6 @@ export default function CheckoutPage() {
               <Box sx={{ display: "flex", alignItems: "baseline" }}>
                 <Typography sx={{ fontWeight: 700, fontSize: 24, mr: 2 }}>
                   Tổng
-                </Typography>
-                <Typography sx={{ color: "#888", fontWeight: 400, fontSize: 18, mr: 1 }}>
-                  VND
                 </Typography>
                 <Typography sx={{ fontWeight: 700, fontSize: 28 }}>
                   {total.toLocaleString("vi-VN")} đ

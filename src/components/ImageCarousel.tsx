@@ -3,10 +3,10 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 const images = [
-  '/HOI_LOGO.jpg',
-  '/aboutus_background.jpg',
-  '/HOI_LOGO.jpg',
-  '/aboutus_background.jpg',
+  'main1.png',
+  'main2.png',
+  'main3.png',
+  'main4.png',
 ];
 
 // Custom Indicator (dot) styling
@@ -31,7 +31,7 @@ const ImageCarousel = () => {
         showStatus={false}
         infiniteLoop={true}
         autoPlay={true}
-        interval={4000}
+        interval={10000}
         transitionTime={1000}
         // This is the function that renders our custom dots
         renderIndicator={(onClickHandler, isSelected, index, label) => {

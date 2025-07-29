@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { useCart } from './cartContext'; // adjust path as needed
 
-const COUNTRIES = ['Việt Nam']; // Can add more
+const COUNTRIES = ['Việt Nam', 'United States','Canada','Australia','Japan','South Korea','Singapore','Taiwan','France','Germany','United Kingdom'];
 const SHIPPING_COST = 0;
 
 export default function CheckoutPage() {
@@ -93,7 +93,7 @@ export default function CheckoutPage() {
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton size="small" tabIndex={-1}>
-                      <span role="img" aria-label="info">❓</span>
+                      <span role="img" aria-label="info"></span>
                     </IconButton>
                   </InputAdornment>
                 )
@@ -219,7 +219,7 @@ export default function CheckoutPage() {
               />
               <Button
                 variant="outlined"
-                sx={{ px: 3, fontWeight: 600, borderRadius: 2, color: "#bbb", borderColor: "#ddd" }}
+                sx={{ minWidth: 120, px: 3, fontWeight: 600, borderRadius: 2, color: "#bbb", borderColor: "#ddd" }}
                 onClick={applyDiscount}
                 disabled={discountApplied || !discountCode}
               >

@@ -8,7 +8,7 @@ const AboutSection = () => {
         <Typography 
           variant="h3" 
           component="h1" 
-          sx={{ fontWeight: 'bold', mb: 3, color: '#001524' }}
+          sx={{ fontWeight: 'bold', mb: 3, color: '#66431b' }}
         >
           Về HỘI
         </Typography>

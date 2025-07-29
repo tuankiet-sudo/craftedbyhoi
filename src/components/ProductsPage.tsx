@@ -196,7 +196,7 @@ export default function ProductsPage() {
                       transition: 'color 0.15s',
                       '&:hover': { color: '#66431b' }
                     }}
-                    onClick={() => navigate('san-pham/giao-sac-van-ky')}
+                    onClick={() => navigate('/san-pham/giao-sac-van-ky')}
                   >
                     Giao Sắc Văn Kỳ
                   </Typography>

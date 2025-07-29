@@ -26,12 +26,12 @@ const Footer = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: '#001524',
+                backgroundColor: '#66431b',
                 color: 'white',
                 textTransform: 'none',
                 width: '90%',
                 mb: 3,
-                '&:hover': { backgroundColor: '#66431b' },
+                '&:hover': { color: '#66431b', backgroundColor: 'white' },
               }}
             >
               Get 10% Off

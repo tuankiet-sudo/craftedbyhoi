@@ -27,17 +27,20 @@ const Header = () => {
   };
 
   // Styles for dropdown menu items
-  const menuItemStyles = {
-    color: 'black',
-    backgroundColor: 'transparent',
-    transition: 'all 0.22s cubic-bezier(.3,.6,.3,1)',
-    '&:hover': {
-      color: '#66431b',
-      backgroundColor: '#f7efe3',
-      transform: 'translateX(8px) scale(1.03)',
-      boxShadow: '0 2px 16px 0 #f7efe344',
-    },
-  };
+const menuItemStyles = {
+  color: 'black',
+  backgroundColor: 'transparent',
+  transition: 'all 0.22s cubic-bezier(.3,.6,.3,1)',
+  pr: 2.5, // or px: '24px' (space left and right)
+  borderRadius: 2, // so highlight is rounded and doesn’t touch edge
+  marginRight: 1, // optional, for even more margin
+  '&:hover': {
+    color: '#66431b',
+    backgroundColor: '#f7efe3',
+    boxShadow: '0 2px 8px 0 #f7efe344',
+    transform: 'translateX(8px) scale(1.03)',
+  },
+};
 
   // ---- Products Button Handlers ----
   const handleProductsButtonClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -130,7 +133,7 @@ const Header = () => {
               sx: {
                 backgroundColor: 'white',
                 width: 200,
-                padding: '8px 8px',
+                padding: '8px 12px',
                 borderRadius: 2,
                 boxShadow: '0 6px 32px 0 #eee',
                 transition: 'all 0.25s cubic-bezier(.3,.6,.3,1)',

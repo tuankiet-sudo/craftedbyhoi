@@ -136,7 +136,7 @@ export default function CheckoutPage() {
     fontWeight: 600,
     bgcolor: "#66431b",
     borderRadius: 2,
-    '&:hover': { bgcolor: "#001524" }
+    '&:hover': { bgcolor: "#fff", color: "#66431b" }
   }}
   onClick={() => {
     // Replace with real order logic!

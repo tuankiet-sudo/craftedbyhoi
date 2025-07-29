@@ -70,10 +70,10 @@ function Step2({ onNext, receipt, setReceipt }: any) {
   const QR_SRC = "/hoi-qr.png";
   return (
     <Grid container spacing={0} sx={{ minHeight: 400 }}>
-      <Grid size={{xs:12, md:6}} sx={{ px: { xs: 2, md: 5 }, py: 7, display: 'flex', flexDirection: 'column', alignItems: "center", justifyContent: 'center' }}>
-        <Typography sx={{ fontWeight: 600, mb: 2 }}>Quét QR để đóng góp</Typography>
-        <Paper elevation={0} sx={{ p: 3, bgcolor: '#faf9ee', borderRadius: 3 }}>
-          <img src={QR_SRC} alt="Quỹ HỘI QR" style={{ width: 250, height: 250 }} />
+      <Grid size={{xs:12, md:6}} sx={{ px: { xs: 2, md: 5 }, py: 8, display: 'flex', flexDirection: 'column', alignItems: "center", justifyContent: 'center' }}>
+        <Typography variant='h5' sx={{ fontWeight: 700, mb: 4 }}>Quét QR để đóng góp</Typography>
+        <Paper elevation={0} sx={{ p: 4, bgcolor: '#fff', borderRadius: 3 }}>
+          <img src={QR_SRC} alt="Quỹ HỘI QR" style={{ width: 280, height: 280 }} />
         </Paper>
       </Grid>
       <Grid size={{xs:12, md:6}} sx={{ px: { xs: 2, md: 5 }, py: 7, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>

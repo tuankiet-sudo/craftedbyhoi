@@ -1,7 +1,7 @@
 import { Box, Typography, Container } from '@mui/material';
 
 // Update these paths to your actual images
-const heroBg = "/hoi-about-hero.jpg"; // Hero bg image
+const heroBg = "/main2.png"; // Hero bg image
 const contentBg = "/aboutus_background.jpg"; // Content paragraph bg
 
 export default function AboutPage() {

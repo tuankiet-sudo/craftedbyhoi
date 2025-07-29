@@ -130,10 +130,11 @@ export default function CartDrawer({ open, onClose }: { open: boolean, onClose: 
                 py: 1.6,
                 fontSize: 18,
                 bgcolor: "#66431b",
+                color: "#fff",
                 fontWeight: 700,
                 borderRadius: 2,
                 boxShadow: "none",
-                '&:hover': { bgcolor: "#001524" }
+                '&:hover': { bgcolor: "#fff", color: "#66431b" }
                 }}
                 onClick={() => {
                 onClose();

@@ -19,9 +19,10 @@ import  {useCart } from './cartContext';
 import { useNavigate } from 'react-router-dom';
 
 const images = [
-  '/giao-sac-van-ky-1.jpg',
-  '/giao-sac-van-ky-2.jpg',
-  '/giao-sac-van-ky-3.jpg'
+  '/main4.png',
+  '/main1.png',
+  '/main2.png',
+  '/main3.png'
 ];
 
 const DESCRIPTION = [
@@ -150,7 +151,7 @@ export default function GiaoSacVanKyPage() {
     <Box sx={{ maxWidth: 1450, mx: 'auto', pt: 5, pb: 12, px: 2 }}>
       <Grid container spacing={5}>
         {/* Left: Image Gallery */}
-        <Grid size={{xs:12, md:6, lg:6}}>
+        <Grid size={{xs:12, md:7, lg:7}}>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', height: 500 }}>
             {/* Thumbnails */}
             <Stack spacing={2} sx={{ mr: 2, mt: 1, height: 440 }}>
@@ -204,7 +205,7 @@ export default function GiaoSacVanKyPage() {
         </Grid>
 
         {/* Right: Info & Dropdowns */}
-        <Grid size={{xs:12, md:6, lg:6}} maxWidth={1000}>
+        <Grid size={{xs:12, md:5, lg:5}} maxWidth={1000}>
           <Typography variant="h3" sx={{ fontWeight: 700, color: '#001524', mb: 2 }}>
             Giao Sắc Văn Kỳ
           </Typography>
@@ -326,7 +327,7 @@ export default function GiaoSacVanKyPage() {
                 px: 4,
                 py: 1.6,
                 fontWeight: 600,
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 bgcolor: '#ffe8c2',
                 color: '#66431b',
                 borderRadius: 2,
@@ -345,12 +346,12 @@ export default function GiaoSacVanKyPage() {
                 px: 4,
                 py: 1.6,
                 fontWeight: 600,
-                fontSize: '1.1rem',
-                bgcolor: '#001524',
+                fontSize: '1rem',
+                bgcolor: '#66431b',
                 color: '#fff',
                 borderRadius: 2,
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#66431b', color: '#fff' },
+                '&:hover': { bgcolor: '#fff', color: '#66431b' },
                 textTransform: 'none'
               }}
               onClick={handleBuyNow}

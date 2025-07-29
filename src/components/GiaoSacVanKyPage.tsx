@@ -140,7 +140,7 @@ export default function GiaoSacVanKyPage() {
         id: "giao-sac-van-ky",
         name: "Giao Sắc Văn Kỳ",
         price: 2499000,
-        image: '/main4.jpg'
+        image: '/main4.png'
       },
       1
     );

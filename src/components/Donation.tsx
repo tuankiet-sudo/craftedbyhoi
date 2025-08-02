@@ -122,7 +122,7 @@ function Step3({ email }: any) {
       <Divider sx={{ mb: 3, borderColor: "#ecd7be" }} />
       <Typography sx={{ color: "#333", fontSize: 17, mb: 3 }}>
         Chúng tôi xin chân thành cảm ơn bạn vì đã đồng hành cùng HỘI trong hành trình gìn giữ và tiếp sức cho di sản Việt.
-        Khoản đóng góp của bạn là một hạt mầm quý giá, tiếp thêm sinh kế, động lực và niềm tin cho những nghệ nhân đang lặng lẽ gìn giữ bản sắc văn hoá truyền thống. Nhờ bạn, những đôi bàn tay chai sạn ấy sẽ có thêm lý do để tiếp tục thổi hồn vào từng nếp vải, đường gốm, tiếng đàn, câu hát.
+        Toàn bộ khoản đóng góp của bạn sẽ được chuyển trực tiếp cho Quỹ bảo tồn di sản văn hoá của Cục Di sản văn hoá do Bộ Văn Hoá Thể Thao Du Lịch quản lý. Khoản đóng góp của bạn là một hạt mầm quý giá, tiếp thêm sinh kế, động lực và niềm tin cho những nghệ nhân đang lặng lẽ gìn giữ bản sắc văn hoá truyền thống. Nhờ bạn, những đôi bàn tay chai sạn ấy sẽ có thêm lý do để tiếp tục thổi hồn vào từng nếp vải, đường gốm, tiếng đàn, câu hát.
         <br /><br />
         Sau khi chúng tôi xác nhận khoản đóng góp của bạn là hợp lệ, giấy chứng nhận đóng góp (Certificate of Participation) sẽ được gửi qua địa chỉ email {email && <b>{email}</b>} mà bạn đã cung cấp.
       </Typography>
